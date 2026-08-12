@@ -1,12 +1,126 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GamePortfolio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css">
+  <link rel="stylesheet" href="CSS/style.css">
+
 </head>
+
 <body>
-  <h1>黒瀨 宏亮：Portfolio</h1>
-  <p>Unity/C#を中心にゲームを制作しています。</p>
+  <header class="header pc">
+    <div class="box">
+      <div class="logo">
+        <a href="index.html">GamePortfolio</a>
+      </div>
+      <nav>
+        <ul>
+          <li class="logo">
+            <a href="index.html">ホーム</a>
+          </li>
+          <li class="logo">
+            <a href="#mainContent">ゲーム制作一覧</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <picture>
+        <source media="(min-width:600.1px)" srcset="img/hero.jpg">
+        <source media="(max-width:600px)" srcset="img/hero_sp.jpg">
+        <img src="img/hero.jpg" alt="ゲーム制作一覧">
+      </picture>
+      <div class="box">
+        <div class="main">制作ゲーム紹介</div>
+        <div class="sub"></div>
+      </div>
+    </div>
+
+    <div class="collection" id="mainContent">
+      <div class="mainTitle">ゲーム制作一覧</div>
+      <div class="normal">
+        <div class="box">
+          <div class="item">
+            <a href="collection/single001.html">
+              <figure>
+                <img src="img/" alt="">
+              </figure>
+              <div class="title">3D対戦バトルアクションゲーム</div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="collection/single002.html">
+              <figure>
+                <img src="img/" alt="">
+              </figure>
+              <div class="title">2Dアクションゲーム</div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="collection/single003.html">
+              <figure>
+                <img src="img/" alt="2Dテトリス">
+              </figure>
+              <div class="title">2Dテトリス</div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="collection/single004.html">
+              <figure>
+                <img src="img/" alt="3Dシューティングゲーム">
+              </figure>
+              <div class="title">3Dシューティングゲーム</div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="collection/single005.html">
+              <figure>
+                <img src="img/" alt="2D絵当てゲーム">
+              </figure>
+              <div class="title">2D絵当てゲーム</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="pagetop pc">
+    <a href="#top">back to top</a>
+  </div>
+
+  <footer class="footer">
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html">ホーム</a>
+        </li>
+        <li>
+          <a href="collection/single001.html">3D対戦バトルアクションゲーム</a>
+        </li>
+        <li>
+          <a href="collection/single002.html">2D横スクロールアクションゲーム</a>
+        </li>
+        <li>
+          <a href="collection/single003.html">2Dテトリス</a>
+        </li>
+        <li>
+          <a href="collection/single004.html">3Dシューティングゲーム</a>
+        </li>
+        <li>
+          <a href="collection/single005.html">2D絵当てゲーム</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright">&copy; 2026 GamePortfolio.</div>
+  </footer>
 </body>
+
 </html>
+
