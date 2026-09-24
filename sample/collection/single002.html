@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D横スクロールアクション（ゲーム設計プロジェクト） | GamePortfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com">
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header class="header pc">
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">GamePortfolio</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">ホーム</a></li>
+          <li><a href="../index.html#mainContent">ゲーム制作一覧</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- プロジェクト ヒーローセクション -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-content">
+          <div class="project-hero-text">
+            <span class="project-badge-large">ARCHITECTURE PROJECT</span>
+            <h1>2D横スクロールアクション<br>ゲーム設計アーキテクチャ</h1>
+            <p class="project-hero-subtitle">保守性と拡張性の極大化を目指す。デザインパターンと堅牢なクラス設計を学ぶためのゲームエンジニアリングプロジェクトです。</p>
+            
+            <div class="project-hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">開発環境</span>
+                <span class="meta-value">Unity / C#</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">注力テーマ</span>
+                <span class="meta-value">デザインパターン / 設計リファクタリング</span>
+              </div>
+            </div>
+          </div>
+          <!-- ゲーム画面プレースホルダー -->
+          <div class="game-preview">
+            <div class="game-preview-placeholder">
+              <span class="placeholder-icon">🕹️</span>
+              <span class="placeholder-text">設計クラス図やゲーム画面をここに配置</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- プロジェクト概要 -->
+    <section class="project-overview">
+      <div class="container">
+        <h2 class="section-title">プロジェクト概要</h2>
+        <p class="overview-text">
+          本プロジェクトは、ただ「動くゲーム」を作るのではなく、「仕様変更に強く、コードがスパゲティ化しないゲーム開発」の実現を目的とした勉強用プロジェクトです [1, 0.1.10]。2D横スクロールアクションゲームをベースとし、ゲーム内の各システムが適切な責務を持つようにアーキテクチャを厳密に構築しています。
+        </p>
+        
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-icon">🔎</div>
+            <h3>本プロジェクトで目指す設計</h3>
+            <p>UI、プレイヤー、敵、ステージギミックの各クラスが独立し、お互いを直接参照せずにイベント駆動で連携するクリーンな状態の維持。</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-icon">📊</div>
+            <h3>検証・学習内容</h3>
+            <p>状態管理の切り離し、共通処理のコンポーネント化、ゲーム全体の実行を統括するマネージャークラスの役割の最適化。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- テクニカルアーキテクチャ（CSSのスタイルを利用） -->
+    <section class="technical-architecture">
+      <div class="container">
+        <div class="architecture-content">
+          <div class="architecture-section">
+            <h3>技術的な取り組み & 採用アーキテクチャ</h3>
+            <div class="pattern-grid">
+              <div class="pattern-card">
+                <div class="pattern-icon">💡</div>
+                <h4>Stateパターンの導入</h4>
+                <p>プレイヤーの「待機」「移動」「ジャンプ」「攻撃」といった複雑な状態遷移をStateパターンで分離し、条件分岐（if文）の乱立を防いでいます。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">⚙️</div>
+                <h4>コンポーネント指向の徹底</h4>
+                <p>移動や攻撃といった処理を単一責任のコンポーネントとして細分化し、新しい敵キャラクターなどを追加する際のコード再利用性を大幅に高めています。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 課題と解決（CSSの.challenges-gridを利用） -->
+    <section class="challenges-solutions">
+      <div class="container">
+        <h2 class="section-title">設計における課題とアプローチ</h2>
+        <div class="challenges-grid">
+          
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <span class="challenge-icon">⚠️</span>
+              <h3>課題：過度な密結合と機能追加の難し化</h3>
+            </div>
+            <p class="challenge-text">アクションゲームはギミックや敵の種類が増えるほど、オブジェクト同士が依存し合い、一部を書き換えると全体がバグる密結合になりがちです。</p>
+            <div class="challenge-divider"></div>
+            <div class="solution-header">
+              <span class="solution-icon">✨</span>
+              <h3>アプローチ</h3>
+            </div>
+            <p class="solution-text">インターフェース（Interface）の活用や、通知処理による疎結合なイベント駆動型アーキテクチャを取り入れ、コードの独立性を担保しています。</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ソースコードへのリンク（CSSの.call-to-actionを利用） -->
+    <section class="call-to-action">
+      <div class="container">
+        <h2>GitHubで設計リポジトリを公開中</h2>
+        <p class="cta-text">オブジェクト指向やUnityでのコーディング設計を意識したソースコードの全容は、以下からご確認いただけます。</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/kousukekurose/GameDesignArchitecture" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubリポジトリを見る</a>
+          <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 GamePortfolio.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
