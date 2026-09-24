@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COOK in LIAR | GamePortfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com">
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header class="header pc">
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">GamePortfolio</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">ホーム</a></li>
+          <li><a href="../index.html#mainContent">ゲーム制作一覧</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- プロジェクト ヒーローセクション -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-content">
+          <div class="project-hero-text">
+            <span class="project-badge-large" style="background-color: var(--primary-color);">JGA2023 最終選考進出</span>
+            <h1>COOK in LIAR</h1>
+            <p class="project-hero-subtitle">2023年日本ゲーム大賞学生部門に向けてチームで制作した、料理お題当て推理ゲーム。相手の食材選択から料理を予測し、ポイントを競い合います。</p>
+            
+            <div class="project-hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">開発環境 / エンジン</span>
+                <span class="meta-value">Unity (C#)</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">チーム役割</span>
+                <span class="meta-value">プログラマー（3名チーム）</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">実績</span>
+                <span class="meta-value">日本ゲーム大賞2023 学生部門 最終選考進出</span>
+              </div>
+            </div>
+          </div>
+          <!-- ゲーム画面プレースホルダー -->
+          <div class="game-preview">
+            <div class="game-preview-placeholder">
+              <span class="placeholder-icon">🍳</span>
+              <span class="placeholder-text">COOK in LIARのゲーム画面スクショをここに配置</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- プロジェクト概要 -->
+    <section class="project-overview">
+      <div class="container">
+        <h2 class="section-title">プロジェクト概要</h2>
+        <p class="overview-text">
+          本作品は、2023年日本ゲーム大賞学生部門に向けてチーム（プログラマー3名）で制作した対戦型推理ゲームです。プレイヤーはステージ内で食材を集めながら、相手がどの料理を作ろうとしているかを予測し、最終的に相手のお題を当ててポイントを競い合います。
+        </p>
+        
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-icon">🏆</div>
+            <h3>コンテスト実績</h3>
+            <p>日本ゲーム大賞2023学生部門にて最終選考まで進出。審査員からの評価を得るクオリティとオリジナリティを実現しました。</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-icon">👥</div>
+            <h3>チーム開発</h3>
+            <p>プログラマー3名での協力開発。役割分担とコミュニケーションを通じて、短期間での高品質なゲーム制作を実現しました。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 担当箇所セクション -->
+    <section class="technical-architecture">
+      <div class="container">
+        <div class="architecture-content">
+          <div class="architecture-section">
+            <h3 class="section-title" style="text-align: center; margin-bottom: 3rem;">担当箇所 & 技術的実装</h3>
+            <div class="pattern-grid">
+              
+              <div class="pattern-card">
+                <div class="pattern-icon">💾</div>
+                <h4>データ保存システム</h4>
+                <p>プレイヤーの進行状況、スコア、設定情報などのデータを適切に保存・読み込みするシステムを実装。ゲームの中断・再開を可能にし、ユーザー体験を向上させました。</p>
+              </div>
+
+              <div class="pattern-card">
+                <div class="pattern-icon">🎮</div>
+                <h4>操作切り替えシステム</h4>
+                <p>ゲームパッドとキーボードの両方に対応した操作システムを実装。プレイヤーの環境に応じて最適な入力方法を自動切り替えし、アクセシビリティを向上させました。</p>
+              </div>
+
+              <div class="pattern-card">
+                <div class="pattern-icon">📊</div>
+                <h4>CSVファイル読み込み</h4>
+                <p>料理レシピ、食材データ、スコア設定などのゲームデータをCSVファイルから動的に読み込むシステムを実装。データとロジックの分離により、バランス調整やコンテンツ追加を容易にしました。</p>
+              </div>
+
+              <div class="pattern-card">
+                <div class="pattern-icon">🎬</div>
+                <h4>タイトル画面実装</h4>
+                <p>ゲームの顔となるタイトル画面を設計・実装。メニュー操作、視覚効果、BGM同期などを含む、プレイヤーの第一印象を決定づける重要なUIを担当しました。</p>
+              </div>
+
+              <div class="pattern-card">
+                <div class="pattern-icon">🏠</div>
+                <h4>ロビー画面実装</h4>
+                <p>対戦準備を行うロビー画面を実装。プレイヤー同期、ルーム選択、設定調整などの機能を含み、スムーズなマルチプレイ体験を提供するUIシステムを構築しました。</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ゲームルール説明 -->
+    <section class="key-features">
+      <div class="container">
+        <h2 class="section-title">ゲームルール概要</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>お題選択</h3>
+            <p>地面にある4つのお題(料理)の中からボタン操作で1つ選択。選んだ料理に必要な食材をステージ中に集めていきます。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>食材収集</h3>
+            <p>ステージ中の食材に近づいてボタンを押して取得。ステージ中央のエリアに順番に捨てていきます。必要な食材をすべてそろえると高ポイントを獲得。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">03</div>
+            <h3>目利きアクション</h3>
+            <p>食材の近くで目利きアクションを行うと食材の品質が判明。品質に応じて追加ポイントを獲得できます（最高30ポイント〜普通10ポイント）。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">04</div>
+            <h3>料理予測</h3>
+            <p>プレイヤーが食材を取ると、その食材が必要なお題が予測表示されます。相手の行動からお題を推理し、最終的に相手のお題を当ててポイントを競います。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 操作方法 -->
+    <section class="architecture" style="background-color: var(--background-secondary);">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center;">操作方法</h2>
+        <div class="code-block" style="max-width: 800px; margin: 0 auto;">
+          <div class="code-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <pre><code style="display: block; padding: 1.5rem; overflow-x: auto; text-align: left;">ゲームパッド操作:
+決定      : Aボタン
+移動      : 左スティック
+料理選択  : A/B/X/Yボタン
+食材取得  : Aボタン
+食材捨て  : Bボタン
+目利き    : Yボタン
+ポーズ    : STARTボタン
+
+キーボード操作:
+決定      : ENTERキー
+移動      : 矢印キー
+料理選択  : A/B/X/Yキー
+食材取得  : SPACEキー
+食材捨て  : SPACEキー
+目利き    : 右クリック
+ポーズ    : ESCAPEキー</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- コールトゥアクション -->
+    <section class="call-to-action">
+      <div class="container">
+        <h2>日本ゲーム大賞最終選考進出作品</h2>
+        <p class="cta-text">チームで制作した対戦型推理ゲームの全容はGitHubにてご確認いただけます。データ管理、UI実装、操作システムなどの技術的な詳細も公開中です。</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/kousukekurose/2022-JGA2023-Team3" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubでソースコードを見る</a>
+          <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 GamePortfolio.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
