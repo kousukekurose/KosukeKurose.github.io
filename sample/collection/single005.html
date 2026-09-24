@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2Dお絵描き伝言ゲーム | GamePortfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com">
+  <!-- 大文字のCSSフォルダと階層のズレを完全に最適化 -->
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header class="header pc">
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">GamePortfolio</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">ホーム</a></li>
+          <li><a href="../index.html#mainContent">ゲーム制作一覧</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- プロジェクト ヒーローセクション -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-content">
+          <div class="project-hero-text">
+            <span class="project-badge-large" style="background-color: var(--success-color);">PLAYABLE (ONLINE WEB公開中)</span>
+            <h1>2Dお絵描き伝言ゲーム</h1>
+            <p class="project-hero-subtitle">完全オンライン対応。離れたプレイヤー同士でリアルタイムに絵を伝言していく、カジュアルなマルチプレイゲームです。</p>
+            
+            <div class="project-hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">開発環境 / エンジン</span>
+                <span class="meta-value">Unity (C#)</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">公開サイト</span>
+                <span class="meta-value">unityroom</span>
+              </div>
+            </div>
+          </div>
+          <!-- ゲーム画面プレースホルダー -->
+          <div class="game-preview">
+            <div class="game-preview-placeholder">
+              <span class="placeholder-icon">🎨</span>
+              <span class="placeholder-text">お絵描き伝言ゲームのプレイ画面スクショをここに配置</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- プロジェクト概要 -->
+    <section class="project-overview">
+      <div class="container">
+        <h2 class="section-title">プロジェクト概要</h2>
+        <p class="overview-text">
+          本作品は、フリーゲーム投稿サイト「unityroom」にてWebブラウザ向けに一般公開している、2人プレイ用のオンライン伝言ゲームです。「描いた絵を相手に伝える」「相手の絵からお題を当てる」というネットワークを介したインタラクティブなゲームループを実装しています。
+        </p>
+        
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-icon">🌐</div>
+            <h3>オンラインマルチプレイの同期</h3>
+            <p>2人のプレイヤー間でリアルタイムにお絵描きデータやお題のテキスト入力を通信・同期させる、Web環境でのネットワークシステムを構築しました。</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-icon">⚙️</div>
+            <h3>実機検証とプレイアビリティ</h3>
+            <p>モバイルブラウザにおける文字入力時の画面リサイズ挙動など、マルチデバイス特有の課題に対してユーザーへ適切なアナウンスを施すなど、運用面での配慮も行っています。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技術的な取り組み（CSSのスタイルを利用） -->
+    <section class="technical-architecture">
+      <div class="container">
+        <div class="architecture-content">
+          <div class="architecture-section">
+            <h3>技術的な取り組み & ネットワーク設計</h3>
+            <div class="pattern-grid">
+              <div class="pattern-card">
+                <div class="pattern-icon">📡</div>
+                <h4>リアルタイム通信とデータ軽量化</h4>
+                <p>キャンバスに描かれた線画の座標データを効率的にパッケージングして通信し、ブラウザ間での遅延の少ないスムーズな同期処理を検証しています。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">📝</div>
+                <h4>動的な状態管理（シーケンス制御）</h4>
+                <p>「お題入力フェーズ」→「お絵描きフェーズ」→「回答フェーズ」という、オンライン上の双方向のゲーム進行状態（シーケンス）を厳密に同期・管理しています。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 遊び方・注意点（CSSの.challenges-gridを利用して綺麗に配置） -->
+    <section class="key-features">
+      <div class="container">
+        <h2 class="section-title">プレイ方法 & 仕様</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>2人プレイ専用（完全オンライン）</h3>
+            <p>1人でテスト・確認を行う際には、ブラウザの画面（タブまたは別ウィンドウ）を2つ同時に用意していただくことでプレイ可能です。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>モバイル端末での注意点</h3>
+            <p>スマホ操作時の文字入力で画面サイズが変わった場合は、一度画面を縦向きに戻してから再度横向きにすると元の快適なサイズでプレイできます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- コールトゥアクション（CSSの.call-to-actionを利用） -->
+    <section class="call-to-action">
+      <div class="container">
+        <h2>Webブラウザでオンライン対戦可能</h2>
+        <p class="cta-text">実際の挙動やオンライン同期のクオリティは、unityroomの公開ページにて直接ご確認いただけます。</p>
+        <div class="cta-buttons">
+          <a href="https://unityroom.com/games/doodle_chain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">unityroomでゲームを遊ぶ</a>
+          <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 GamePortfolio.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
