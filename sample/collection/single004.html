@@ -38,7 +38,7 @@
             <div class="project-hero-meta">
               <div class="meta-item">
                 <span class="meta-label">開発環境 / ライブラリ</span>
-                <span class="meta-value">Unity 6.5 (6000.5.7f1) / C# / VContainer / R3</span>
+                <span class="meta-value">Unity 6.5 (6000.5.7f1) / C# / VContainer / MessagePipe</span>
               </div>
               <div class="meta-item">
                 <span class="meta-label">注力テーマ</span>
@@ -148,8 +148,8 @@
 
               <div class="pattern-card">
                 <div class="pattern-icon">📡</div>
-                <h4>R3 (Rx) によるリアクティブイベント駆動</h4>
-                <p>プレイヤーや敵のイベント（ダメージ、死亡、生成など）の通知にR3（Observable）を採用。クラス間を疎結合に保ったまま、サウンドやエフェクトなどの演出システムへの連動を可能にしています。</p>
+                <h4>MessagePipe によるイベント駆動</h4>
+                <p>プレイヤーや敵のイベント（ダメージ、死亡、生成など）の通知にMessagePipeを採用。クラス間を疎結合に保ったまま、サウンドやエフェクトなどの演出システムへの連動を可能にしています。</p>
               </div>
 
               <div class="pattern-card">
@@ -187,7 +187,7 @@
               <span class="solution-icon" style="font-size: 1.5rem;">✨</span>
               <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">解決アプローチ</h3>
             </div>
-            <p class="solution-text" style="color: var(--text-primary);"><code>EnemyFactory.cs</code> 内にVContainerの <code>IObjectResolver</code> をインジェクトし、プレハブをインスタンス化するタイミングで <code>InstantiateAndInject</code> を用いて安全にデータをバインドする設計を採用しました。</p>
+            <p class="solution-text"><code>EnemyFactory.cs</code> 内にVContainerの <code>IObjectResolver</code> をインジェクトし、プレハブをインスタンス化した後に <code>Inject</code> メソッドを用いて安全に依存関係を解決する設計を採用しました。</p>
           </div>
 
         </div>
