@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2Dシューティングゲーム（開発中） | GamePortfolio</title>
+  <title>2Dシューティングゲーム（設計主導） | GamePortfolio</title>
   <link rel="stylesheet" href="https://unpkg.com">
   <link rel="stylesheet" href="../CSS/style.css">
 </head>
@@ -32,17 +32,17 @@
         <div class="project-hero-content">
           <div class="project-hero-text">
             <span class="project-badge-large" style="background-color: var(--secondary-color);">DEVELOPING (進捗率: 60%)</span>
-            <h1>2Dシューティングゲーム</h1>
-            <p class="project-hero-subtitle">InputSystemの動的参照に挑戦。拡張性と疎結合を意識したアーキテクチャ設計を学ぶための開発プロジェクトです。</p>
+            <h1>2Dシューティングゲーム<br>アーキテクチャ実証プロジェクト</h1>
+            <p class="project-hero-subtitle">クリーンアーキテクチャ、VContainerによるDI、R3によるリアクティブプログラミングをゲーム開発に落とし込んだ、拡張性を極限まで追求した設計です。</p>
             
             <div class="project-hero-meta">
               <div class="meta-item">
-                <span class="meta-label">開発環境</span>
-                <span class="meta-value">Unity 6.5 (6000.5.7f1) / C#</span>
+                <span class="meta-label">開発環境 / ライブラリ</span>
+                <span class="meta-value">Unity 2022 / C# / VContainer / R3</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">開発期間</span>
-                <span class="meta-value">2026年8月 〜 開発中</span>
+                <span class="meta-label">注力テーマ</span>
+                <span class="meta-value">レイヤードアーキテクチャ / 依存関係の解決</span>
               </div>
             </div>
           </div>
@@ -62,41 +62,78 @@
       <div class="container">
         <h2 class="section-title">プロジェクト概要</h2>
         <p class="overview-text">
-          本作品は、従来のUnityのインスペクター上でコンポーネントをアタッチ・参照する手法をあえて避け、スクリプト主導で入力システムを構築する実験的な2Dシューティングゲームです。シーン遷移やオブジェクトの動的生成に強い、堅牢なゲーム基盤の実装を目指しています。
+          本作品は、従来のUnity開発で見られる「インスペクター上でのコンポーネントの直接参照（ドラッグ＆ドロップ）」や「Monobehaviourへのロジックの肥大化」を徹底的に排除した、実験的な2Dシューティングゲームです。商業開発のシニアレベルで求められる疎結合なアーキテクチャを個人開発で再現・検証することを目的としています。
         </p>
         
         <div class="overview-grid">
           <div class="overview-card">
             <div class="overview-icon">🛠️</div>
             <h3>実装済みの機能</h3>
-            <p>プレイヤーの移動、ショット発射、敵キャラクターのスポーンシステム、InputSystemのスクリプト制御。</p>
+            <p>プレイヤーの移動・攻撃、多様な敵（Basic/Fast/Tank/Ranged/Boss）の生成システム、各レイヤーを跨ぐデータ同期。</p>
           </div>
           <div class="overview-card">
             <div class="overview-icon">📈</div>
             <h3>今後の実装予定</h3>
-            <p>スコアシステム、ボスバトル、UI（タイトル・リザルト画面）の統合、エフェクトやSEの追加。</p>
+            <p>スコア・リザルトシステムの統合、アイテムドロップ機能、ステージ全体のウェーブ管理ロジックの実装。</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 技術的なこだわり（CSSのスタイルを利用） -->
+    <!-- フォルダ構成セクション（CSSの.architectureスタイルを利用） -->
+    <section class="architecture" style="background-color: var(--background-secondary);">
+      <div class="container">
+        <h2 class="section-title">設計フォルダ構成</h2>
+        <p class="overview-text" style="text-align: center; margin-bottom: 2rem;">
+          ドメイン駆動設計（DDD）とクリーンアーキテクチャの思想をベースに、各クラスの責務を完全に4つのレイヤーに分離しています。
+        </p>
+
+        <div class="code-block" style="max-width: 800px; margin: 0 auto 3rem auto;">
+          <div class="code-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <pre><code>Assets/Script/
+├── 📁 Framework     // 共通基盤（DIコンテナの構成、イベント駆動の基底、一般化Stateパターン）
+├── 📁 Game          // ドメイン（Unityから自立した、キャラの純粋な状態管理・計算ロジック）
+├── 📁 Application   // ユースケース（各キャラクターの行動仕様や、生成・管理のライフサイクル）
+└── 📁 Presentation  // ビュー（描画、アニメーション、生の入力イベントの検知のみを担当）</code></pre>
+        </div>
+      </div>
+    </section>
+
     <section class="technical-architecture">
       <div class="container">
         <div class="architecture-content">
           <div class="architecture-section">
-            <h3>技術的なこだわり & アーキテクチャ</h3>
+            <h3>採用アーキテクチャ & モダン技術スタック</h3>
             <div class="pattern-grid">
+              
               <div class="pattern-card">
                 <div class="pattern-icon">🧬</div>
-                <h4>疎結合なデータ設計</h4>
-                <p>PlayerInputをオブジェクトに直接参照させないことで、プレイヤーが破壊・再生成された際にも入力処理が途切れない、保守性の高いコードを実現しています。</p>
+                <h4>VContainer による依存関係注入 (DI)</h4>
+                <p><code>GameLifetimeScope.cs</code> を通じて、すべての依存関係をコード上で中央集権的に解決。インスペクター依存を無くし、動的なオブジェクト生成時における初期化順のバグを根本から排除しています。</p>
               </div>
+
               <div class="pattern-card">
-                <div class="pattern-icon">⚡</div>
-                <h4>新InputSystemの活用</h4>
-                <p>ゲームパッドやキーボードなど、複数デバイスの切り替えに対応しやすいモダンな入力イベント駆動を採用しています。</p>
+                <div class="pattern-icon">📡</div>
+                <h4>R3 (Rx) によるリアクティブイベント駆動</h4>
+                <p>プレイヤーや敵のイベント（ダメージ、死亡、生成など）の通知にR3（Observable）を採用。クラス間を疎結合に保ったまま、サウンドやエフェクトなどの演出システムへの連動を可能にしています。</p>
               </div>
+
+              <div class="pattern-card">
+                <div class="pattern-icon">⚙️</div>
+                <h4>厳密な一般化Stateパターンの導入</h4>
+                <p><code>CharacterStateMachine.cs</code> を基底とし、プレイヤーおよび敵の全アクション（Idle/Move/Chase/Attack/Damage/Death）をカプセル化。肥大化しがちな条件分岐をスッキリと分離しました。</p>
+              </div>
+
+              <div class="pattern-card">
+                <div class="pattern-icon">💎</div>
+                <h4>純粋なC#ロジック（Domain層）の隔離</h4>
+                <p>ゲームの基本規則（弾丸の軌道計算、ステータス増減など）をUnityの機能（MonoBehaviour）から完全に独立したC#クラスで記述。テストの自動化や移植性を担保しています。</p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -104,23 +141,23 @@
     </section>
 
     <!-- 課題と解決（CSSの.challenges-gridを利用） -->
-    <section class="challenges-solutions">
+    <section class="challenges-solutions" style="background-color: var(--background-secondary);">
       <div class="container">
-        <h2 class="section-title">開発中の課題とアプローチ</h2>
+        <h2 class="section-title">設計における課題とアプローチ</h2>
         <div class="challenges-grid">
           
           <div class="challenge-card">
             <div class="challenge-header">
               <span class="challenge-icon">⚠️</span>
-              <h3>課題：動的参照による初期化のタイミング</h3>
+              <h3>課題：動的生成時（Factory）の依存関係解決</h3>
             </div>
-            <p class="challenge-text">インスペクターを使わないため、スクリプトの実行順（Execution Order）によってはNullReferenceExceptionが発生しやすいリスクがありました。</p>
+            <p class="challenge-text">シーン上に最初から配置されていない敵（EnemyBasicなど）をスポナーで生成する際、生成されたインスタンスにDIコンテナ経由で自動的に依存関係を持たせる記述に工夫が必要でした。</p>
             <div class="challenge-divider"></div>
             <div class="solution-header">
-              <span class="solution-icon">💡</span>
-              <h3>現在のアプローチ</h3>
+              <span class="solution-icon">✨</span>
+              <h3>解決アプローチ</h3>
             </div>
-            <p class="solution-text">Awake/Startでの初期化処理を厳密に分離し、安全なコールバックやマネージャークラスを介して動的バインドを行う設計を進めています。</p>
+            <p class="solution-text"><code>EnemyFactory.cs</code> 内にVContainerの <code>IObjectResolver</code> をインジェクトし、プレハブをインスタンス化するタイミングで <code>InstantiateAndInject</code> を用いて安全にデータをバインドする設計を採用しました。</p>
           </div>
 
         </div>
@@ -130,10 +167,10 @@
     <!-- ソースコードへのリンク（CSSの.call-to-actionを利用） -->
     <section class="call-to-action">
       <div class="container">
-        <h2>GitHubでソースコードを公開中</h2>
-        <p class="cta-text">実際のスクリプト設計やリポジトリのコミット履歴は、以下のリンクからご確認いただけます。</p>
+        <h2>GitHubで設計ソースコードを完全公開中</h2>
+        <p class="cta-text">VContainerのスコープ定義や、R3を用いたイベント設計、クリーンなクラス設計の全容はリポジトリからすべてご覧いただけます。</p>
         <div class="cta-buttons">
-          <a href="https://github.com/kousukekurose/2DShootingGame" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubリポジトリを見る</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubリポジトリを見る</a>
           <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
         </div>
       </div>
