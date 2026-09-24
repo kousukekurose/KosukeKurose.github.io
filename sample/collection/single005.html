@@ -33,12 +33,12 @@
           <div class="project-hero-text">
             <span class="project-badge-large" style="background-color: var(--success-color);">PLAYABLE (ONLINE WEB公開中)</span>
             <h1>2Dお絵描き伝言ゲーム</h1>
-            <p class="project-hero-subtitle">完全オンライン対応。離れたプレイヤー同士でリアルタイムに絵を伝言していく、カジュアルなマルチプレイゲームです。</p>
+            <p class="project-hero-subtitle">Photon Fusionを使用した完全オンライン対応。離れたプレイヤー同士でリアルタイムに絵を伝言していく、カジュアルなマルチプレイゲームです。</p>
             
             <div class="project-hero-meta">
               <div class="meta-item">
                 <span class="meta-label">開発環境 / エンジン</span>
-                <span class="meta-value">Unity (C#)/ Photon</span>
+                <span class="meta-value">Unity (C#) / Photon Fusion 2.1</span>
               </div>
               <div class="meta-item">
                 <span class="meta-label">公開サイト</span>
@@ -62,14 +62,24 @@
       <div class="container">
         <h2 class="section-title">プロジェクト概要</h2>
         <p class="overview-text">
-          本作品は、フリーゲーム投稿サイト「unityroom」にてWebブラウザ向けに限定公開している、2人プレイ用のオンライン伝言ゲームです。「描いた絵を相手に伝える」「相手の絵からお題を当てる」というネットワークを介したインタラクティブなゲームループを実装しています。
+          本作品は、フリーゲーム投稿サイト「unityroom」にてWebブラウザ向けに限定公開している、2人プレイ用のオンライン伝言ゲームです。Photon Fusion 2.1を使用したリアルタイム通信により、「描いた絵を相手に伝える」「相手の絵からお題を当てる」というネットワークを介したインタラクティブなゲームループを実装しています。
         </p>
         
         <div class="overview-grid">
           <div class="overview-card">
             <div class="overview-icon">🌐</div>
-            <h3>オンラインマルチプレイの同期</h3>
-            <p>2人のプレイヤー間でリアルタイムにお絵描きデータやお題のテキスト入力を通信・同期させる、Web環境でのネットワークシステムを構築しました。</p>
+            <h3>Photon Fusionによるオンライン同期</h3>
+            <p>NetworkBehaviourを継承したコンポーネントでリアルタイム通信を実現。RPC（Remote Procedure Call）を使用してお絵描きの座標データを全プレイヤー間で同期しています。</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-icon">👥</div>
+            <h3>ホスト/ゲスト役割割り当てシステム</h3>
+            <p>セッションプロパティを使用した役割同期機能。最初に入室したプレイヤーがホストとして「描き手」「回答者」の役割を選択し、その情報をネットワーク経由でゲストに伝達します。</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-icon">🔄</div>
+            <h3>シーン同期と状態管理</h3>
+            <p>NetworkSceneManagerDefaultによるシーン同期と、ネットワーク変数を使用したお題の同期。ロビーからゲームシーンへの遷移も全プレイヤーで同期されます。</p>
           </div>
           <div class="overview-card">
             <div class="overview-icon">⚙️</div>
@@ -80,7 +90,7 @@
       </div>
     </section>
 
-    <!-- 技術的な取り組み（CSSのスタイルを利用） -->
+    <!-- 技術的な取り組み -->
     <section class="technical-architecture">
       <div class="container">
         <div class="architecture-content">
@@ -89,13 +99,23 @@
             <div class="pattern-grid">
               <div class="pattern-card">
                 <div class="pattern-icon">📡</div>
-                <h4>リアルタイム通信とデータ軽量化</h4>
-                <p>キャンバスに描かれた線画の座標データを効率的にパッケージングして通信し、ブラウザ間での遅延の少ないスムーズな同期処理を検証しています。</p>
+                <h4>RPCによるリアルタイム線画同期</h4>
+                <p><code>SyncLinePoints.cs</code>でFusionのRPC機能を使用。線の座標データを<code>AddPointRPC(Vector3 nextPoint)</code>として全プレイヤーにブロードキャストし、キャンバス上の線画をリアルタイムで同期しています。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">🎮</div>
+                <h4>NetworkRunnerによるルーム管理</h4>
+                <p><code>NetworkManager.cs</code>でNetworkRunnerを使用したルーム接続・作成システム。GameMode.Sharedモードで共有型ルームを実現し、非同期の<code>StartGame</code>メソッドで接続処理を行っています。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">👥</div>
+                <h4>セッションプロパティによる役割同期</h4>
+                <p><code>LobbyManager.cs</code>でセッションプロパティを使用した役割割り当て。ホストが選択した役割を<code>UpdateCustomProperties</code>でネットワーク上に同期し、ゲスト側で安全に監視・取得します。</p>
               </div>
               <div class="pattern-card">
                 <div class="pattern-icon">📝</div>
                 <h4>動的な状態管理（シーケンス制御）</h4>
-                <p>「マッチング待機フェーズ」→「お絵描きフェーズ」→「回答フェーズ」という、オンライン上の双方向のゲーム進行状態（シーケンス）を厳密に同期・管理しています。</p>
+                <p>「マッチング待機フェーズ」→「役割選択フェーズ」→「お絵描きフェーズ」→「回答フェーズ」という、オンライン上の双方向のゲーム進行状態（シーケンス）を厳密に同期・管理しています。</p>
               </div>
             </div>
           </div>
@@ -103,7 +123,33 @@
       </div>
     </section>
 
-    <!-- 遊び方・注意点（CSSの.challenges-gridを利用して綺麗に配置） -->
+    <!-- フォルダ構成セクション -->
+    <section class="architecture" style="background-color: var(--background-secondary);">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center;">主要スクリプト構成</h2>
+        <p class="overview-text" style="max-width: 800px; margin: 0 auto 2rem auto; text-align: center;">
+          Photon Fusionを使用したネットワーク機能の実装構成です。
+        </p>
+
+        <div class="code-block" style="max-width: 800px; margin: 0 auto;">
+          <div class="code-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <pre><code style="display: block; padding: 1.5rem; overflow-x: auto; text-align: left;">Assets/Script/
+├── 📄 NetworkManager.cs          # NetworkRunnerによるルーム接続管理
+├── 📄 LobbyManager.cs            # ロビー管理・役割割り当てシステム
+├── 📄 GameManager.cs             # ゲーム進行管理・ネットワーク変数同期
+├── 📄 DrawLine.cs                # お絵描き機能・Runner.Spawnでネットワークオブジェクト生成
+├── 📄 SyncLinePoints.cs          # RPCによる線画座標同期
+├── 📄 OKClick.cs                 # UI操作・ネットワーク同期
+└── 📄 SceneChange.cs             # シーン遷移管理</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 遊び方・注意点 -->
     <section class="key-features">
       <div class="container">
         <h2 class="section-title">プレイ方法 & 仕様</h2>
@@ -111,10 +157,15 @@
           <div class="feature-card">
             <div class="feature-number">01</div>
             <h3>2人プレイ専用（完全オンライン）</h3>
-            <p>1人でテスト・確認を行う際には、ブラウザの画面（タブまたは別ウィンドウ）を2つ同時に用意していただくことでプレイ可能です。</p>
+            <p>Photon FusionのSharedモードを使用。1人でテスト・確認を行う際には、ブラウザの画面（タブまたは別ウィンドウ）を2つ同時に用意していただくことでプレイ可能です。</p>
           </div>
           <div class="feature-card">
             <div class="feature-number">02</div>
+            <h3>ホスト/ゲスト役割システム</h3>
+            <p>最初に入室したプレイヤーがホストとなり、「絵を描く人」「答える人」の役割を選択。セッションプロパティを通じて相手プレイヤーに役割が自動的に通知されます。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">03</div>
             <h3>モバイル端末での注意点</h3>
             <p>スマホ操作時の文字入力で画面サイズが変わった場合は、一度画面を縦向きに戻してから再度横向きにすると元の快適なサイズでプレイできます。</p>
           </div>
@@ -122,11 +173,11 @@
       </div>
     </section>
 
-    <!-- コールトゥアクション（CSSの.call-to-actionを利用） -->
+    <!-- コールトゥアクション -->
     <section class="call-to-action">
       <div class="container">
         <h2>Webブラウザで今すぐオンラインプレイ可能</h2>
-        <p class="cta-text">実際の動作やオンライン同期のクオリティはunityroomで、内部の通信スクリプトの設計はGitHubにてご確認いただけます。</p>
+        <p class="cta-text">Photon Fusionを使用したリアルタイム同期のクオリティはunityroomで、RPC通信やセッションプロパティの実装詳細はGitHubにてご確認いただけます。</p>
         <div class="cta-buttons">
           <a href="https://unityroom.com/games/doodle_chain" target="_blank" rel="noopener noreferrer" class="btn btn-primary">unityroomでゲームを遊ぶ</a>
           <a href="https://github.com/kousukekurose/Doodle_Chain" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHubでソースコードを見る</a>
