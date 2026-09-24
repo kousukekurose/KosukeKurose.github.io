@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2Dシューティングゲーム（開発中） | GamePortfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com">
+  <!-- 階層が一つ下がるので、cssのパスの前に「../」をつけています -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header class="header pc">
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">GamePortfolio</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">ホーム</a></li>
+          <li><a href="../index.html#mainContent">ゲーム制作一覧</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- プロジェクト ヒーローセクション -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="project-hero-content">
+          <div class="project-hero-text">
+            <span class="project-badge-large" style="background-color: var(--secondary-color);">DEVELOPING (進捗率: 60%)</span>
+            <h1>2Dシューティングゲーム</h1>
+            <p class="project-hero-subtitle">InputSystemの動的参照に挑戦。拡張性と疎結合を意識したアーキテクチャ設計を学ぶための開発プロジェクトです。</p>
+            
+            <div class="project-hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">開発環境</span>
+                <span class="meta-value">Unity 2022 / C#</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">開発期間</span>
+                <span class="meta-value">2026年 〜 開発中</span>
+              </div>
+            </div>
+          </div>
+          <!-- ゲーム画面（または動画）のプレースホルダー -->
+          <div class="game-preview">
+            <div class="game-preview-placeholder">
+              <span class="placeholder-icon">🚀</span>
+              <span class="placeholder-text">ゲームプレイ動画・スクショをここに配置</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- プロジェクト概要 -->
+    <section class="project-overview">
+      <div class="container">
+        <h2 class="section-title">プロジェクト概要</h2>
+        <p class="overview-text">
+          本作品は、従来のUnityのインスペクター上でコンポーネントをアタッチ・参照する手法をあえて避け、スクリプト主導で入力システムを構築する実験的な2Dシューティングゲームです。シーン遷移やオブジェクトの動的生成に強い、堅牢なゲーム基盤の実装を目指しています。
+        </p>
+        
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-icon">🛠️</div>
+            <h3>実装済みの機能</h3>
+            <p>プレイヤーの移動、ショット発射、敵キャラクターのスポーンシステム、InputSystemのスクリプト制御。</p>
+          </div>
+          <div class="overview-card">
+            <div class="overview-icon">📈</div>
+            <h3>今後の実装予定</h3>
+            <p>スコアシステム、ボスバトル、UI（タイトル・リザルト画面）の統合、エフェクトやSEの追加。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技術的なこだわり（CSSのスタイルを利用） -->
+    <section class="technical-architecture">
+      <div class="container">
+        <div class="architecture-content">
+          <div class="architecture-section">
+            <h3>技術的なこだわり & アーキテクチャ</h3>
+            <div class="pattern-grid">
+              <div class="pattern-card">
+                <div class="pattern-icon">🧬</div>
+                <h4>疎結合なデータ設計</h4>
+                <p>PlayerInputをオブジェクトに直接参照させないことで、プレイヤーが破壊・再生成された際にも入力処理が途切れない、保守性の高いコードを実現しています。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">⚡</div>
+                <h4>新InputSystemの活用</h4>
+                <p>ゲームパッドやキーボードなど、複数デバイスの切り替えに対応しやすいモダンな入力イベント駆動を採用しています。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 課題と解決（CSSの.challenges-gridを利用） -->
+    <section class="challenges-solutions">
+      <div class="container">
+        <h2 class="section-title">開発中の課題とアプローチ</h2>
+        <div class="challenges-grid">
+          
+          <div class="challenge-card">
+            <div class="challenge-header">
+              <span class="challenge-icon">⚠️</span>
+              <h3>課題：動的参照による初期化のタイミング</h3>
+            </div>
+            <p class="challenge-text">インスペクターを使わないため、スクリプトの実行順（Execution Order）によってはNullReferenceExceptionが発生しやすいリスクがありました。</p>
+            <div class="challenge-divider"></div>
+            <div class="solution-header">
+              <span class="solution-icon">💡</span>
+              <h3>現在のアプローチ</h3>
+            </div>
+            <p class="solution-text">Awake/Startでの初期化処理を厳密に分離し、安全なコールバックやマネージャークラスを介して動的バインドを行う設計を進めています。</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ソースコードへのリンク（CSSの.call-to-actionを利用） -->
+    <section class="call-to-action">
+      <div class="container">
+        <h2>GitHubでソースコードを公開中</h2>
+        <p class="cta-text">実際のスクリプト設計やリポジトリのコミット履歴は、以下のリンクからご確認いただけます。</p>
+        <div class="cta-buttons">
+          <a href="https://github.com/kousukekurose/2DShootingGame" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubリポジトリを見る</a>
+          <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 GamePortfolio.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
