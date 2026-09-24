@@ -95,10 +95,34 @@
             <div class="dot green"></div>
           </div>
           <pre><code>Assets/Script/
-├── 📁 Framework     // 共通基盤（DIコンテナの構成、イベント駆動の基底、一般化Stateパターン）
-├── 📁 Game          // ドメイン（Unityから自立した、キャラの純粋な状態管理・計算ロジック）
-├── 📁 Application   // ユースケース（各キャラクターの行動仕様や、生成・管理のライフサイクル）
-└── 📁 Presentation  // ビュー（描画、アニメーション、生の入力イベントの検知のみを担当）</code></pre>
+├── 📁 Framework/           # 共通基盤
+│   ├── Core/
+│   │   ├── DI/             # VContainer DI設定
+│   │   ├── Events/         # R3イベント定義
+│   │   ├── Interfaces/     # 各機能のインターフェース
+│   │   └── Patterns/       # StateMachine基底クラス
+│   ├── Audio/              # オーディオシステム
+│   ├── Effects/            # エフェクトシステム
+│   └── UI/                 # UIフレームワーク
+│
+├── 📁 Game/                # ドメイン層（Unity依存なし）
+│   ├── Bullet/             # 弾丸ロジック
+│   ├── Enemy/              # 敵ロジック + State実装
+│   ├── Player/             # プレイヤーロジック + State実装
+│   ├── Shared/             # 共通システム（戦闘・移動・設定）
+│   └── GameFlow/           # ゲームフロー管理
+│
+├── 📁 Application/         # ユースケース層
+│   ├── Bullet/             # 弾丸ユースケース
+│   ├── Enemy/              # 敵ユースケース（生成・AI・攻撃）
+│   ├── Player/             # プレイヤーユースケース
+│   └── Game/               # ゲーム全体ユースケース
+│
+└── 📁 Presentation/        # プレゼンテーション層
+    ├── Bullet/             # 弾丸ビュー
+    ├── Enemy/              # 敵ビュー
+    ├── Player/             # プレイヤービュー + 入力
+    └── UI/                 # UIコンポーネント</code></pre>
         </div>
       </div>
     </section>
