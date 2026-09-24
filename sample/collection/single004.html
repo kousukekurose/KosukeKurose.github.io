@@ -31,7 +31,7 @@
       <div class="container">
         <div class="project-hero-content">
           <div class="project-hero-text">
-            <span class="project-badge-large" style="background-color: var(--secondary-color);">DEVELOPING (進捗率: 60%)</span>
+            <span class="project-badge-large" style="background-color: var(--secondary-color); display: inline-block;">DEVELOPING (進捗率: 60%)</span>
             <h1>2Dシューティングゲーム<br>アーキテクチャ実証プロジェクト</h1>
             <p class="project-hero-subtitle">クリーンアーキテクチャ、VContainerによるDI、R3によるリアクティブプログラミングをゲーム開発に落とし込んだ、拡張性を極限まで追求した設計です。</p>
             
@@ -48,9 +48,9 @@
           </div>
           <!-- ゲーム画面（または動画）のプレースホルダー -->
           <div class="game-preview">
-            <div class="game-preview-placeholder">
-              <span class="placeholder-icon">🚀</span>
-              <span class="placeholder-text">ゲームプレイ動画・スクショをここに配置</span>
+            <div class="game-preview-placeholder" style="background-color: var(--background-tertiary); border: 2px dashed var(--border-color); border-radius: var(--radius-lg); padding: 4rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+              <span class="placeholder-icon" style="font-size: 3rem; margin-bottom: 1rem;">🚀</span>
+              <span class="placeholder-text" style="color: var(--text-secondary); font-size: 0.95rem; font-weight: 500;">ゲームプレイ動画・スクショをここに配置</span>
             </div>
           </div>
         </div>
@@ -60,8 +60,8 @@
     <!-- プロジェクト概要 -->
     <section class="project-overview">
       <div class="container">
-        <h2 class="section-title">プロジェクト概要</h2>
-        <p class="overview-text">
+        <h2 class="section-title" style="text-align: center;">プロジェクト概要</h2>
+        <p class="overview-text" style="max-width: 800px; margin: 0 auto 3rem auto; line-height: 1.8;">
           本作品は、従来のUnity開発で見られる「インスペクター上でのコンポーネントの直接参照（ドラッグ＆ドロップ）」や「Monobehaviourへのロジックの肥大化」を徹底的に排除した、実験的な2Dシューティングゲームです。商業開発のシニアレベルで求められる疎結合なアーキテクチャを個人開発で再現・検証することを目的としています。
         </p>
         
@@ -69,8 +69,14 @@
           <div class="overview-card">
             <div class="overview-icon">🛠️</div>
             <h3>実装済みの機能</h3>
-            <p>プレイヤーの移動・攻撃、多様な敵（Basic/Fast/Tank/Ranged/Boss）の生成システム、各レイヤーを跨ぐデータ同期。</p>
+            <ul style="margin: 0; padding-left: 1.25rem; list-style-type: disc; color: var(--text-secondary); font-size: 0.95rem;">
+              <li style="margin-bottom: 0.25rem;">プレイヤー: 移動・攻撃・ダメージ・死亡ステート</li>
+              <li style="margin-bottom: 0.25rem;">敵キャラ: 5種類のAIパターン</li>
+              <li style="margin-bottom: 0.25rem;">敵システム: スポナー・ファクトリー・マネージャー</li>
+              <li>アーキテクチャ: 完全な4層分離 + DI + R3イベント</li>
+            </ul>
           </div>
+
           <div class="overview-card">
             <div class="overview-icon">📈</div>
             <h3>今後の実装予定</h3>
@@ -83,18 +89,18 @@
     <!-- フォルダ構成セクション（CSSの.architectureスタイルを利用） -->
     <section class="architecture" style="background-color: var(--background-secondary);">
       <div class="container">
-        <h2 class="section-title">設計フォルダ構成</h2>
+        <h2 class="section-title" style="text-align: center;">設計フォルダ構成</h2>
         <p class="overview-text" style="text-align: center; margin-bottom: 2rem;">
           ドメイン駆動設計（DDD）とクリーンアーキテクチャの思想をベースに、各クラスの責務を完全に4つのレイヤーに分離しています。
         </p>
 
-        <div class="code-block" style="max-width: 800px; margin: 0 auto 3rem auto;">
+        <div class="code-block" style="max-width: 800px; margin: 0 auto;">
           <div class="code-header">
             <div class="dot red"></div>
             <div class="dot yellow"></div>
             <div class="dot green"></div>
           </div>
-          <pre><code>Assets/Script/
+          <pre><code style="display: block; padding: 1.5rem; overflow-x: auto; text-align: left;">Assets/Script/
 ├── 📁 Framework/           # 共通基盤
 │   ├── Core/
 │   │   ├── DI/             # VContainer DI設定
@@ -131,7 +137,7 @@
       <div class="container">
         <div class="architecture-content">
           <div class="architecture-section">
-            <h3>採用アーキテクチャ & モダン技術スタック</h3>
+            <h3 class="section-title" style="text-align: center; margin-bottom: 3rem;">採用アーキテクチャ & モダン技術スタック</h3>
             <div class="pattern-grid">
               
               <div class="pattern-card">
@@ -167,33 +173,33 @@
     <!-- 課題と解決（CSSの.challenges-gridを利用） -->
     <section class="challenges-solutions" style="background-color: var(--background-secondary);">
       <div class="container">
-        <h2 class="section-title">設計における課題とアプローチ</h2>
-        <div class="challenges-grid">
+        <h2 class="section-title" style="text-align: center;">設計における課題とアプローチ</h2>
+        <div class="challenges-grid" style="max-width: 800px; margin: 0 auto;">
           
           <div class="challenge-card">
-            <div class="challenge-header">
-              <span class="challenge-icon">⚠️</span>
-              <h3>課題：動的生成時（Factory）の依存関係解決</h3>
+            <div class="challenge-header" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+              <span class="challenge-icon" style="font-size: 1.5rem;">⚠️</span>
+              <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700;">課題：動的生成時（Factory）の依存関係解決</h3>
             </div>
-            <p class="challenge-text">シーン上に最初から配置されていない敵（EnemyBasicなど）をスポナーで生成する際、生成されたインスタンスにDIコンテナ経由で自動的に依存関係を持たせる記述に工夫が必要でした。</p>
-            <div class="challenge-divider"></div>
-            <div class="solution-header">
-              <span class="solution-icon">✨</span>
-              <h3>解決アプローチ</h3>
+            <p class="challenge-text" style="color: var(--text-secondary); margin-bottom: 1.5rem;">シーン上に最初から配置されていない敵（EnemyBasicなど）をスポナーで生成する際、生成されたインスタンスにDIコンテナ経由で自動的に依存関係を持たせる記述に工夫が必要でした。</p>
+            <div class="challenge-divider" style="height: 1px; background-color: var(--border-color); margin: 1.5rem 0;"></div>
+            <div class="solution-header" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+              <span class="solution-icon" style="font-size: 1.5rem;">✨</span>
+              <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--primary-color);">解決アプローチ</h3>
             </div>
-            <p class="solution-text"><code>EnemyFactory.cs</code> 内にVContainerの <code>IObjectResolver</code> をインジェクトし、プレハブをインスタンス化するタイミングで <code>InstantiateAndInject</code> を用いて安全にデータをバインドする設計を採用しました。</p>
+            <p class="solution-text" style="color: var(--text-primary);"><code>EnemyFactory.cs</code> 内にVContainerの <code>IObjectResolver</code> をインジェクトし、プレハブをインスタンス化するタイミングで <code>InstantiateAndInject</code> を用いて安全にデータをバインドする設計を採用しました。</p>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ソースコードへのリンク（CSSの.call-to-actionを利用） -->
-    <section class="call-to-action">
-      <div class="container">
-        <h2>GitHubで設計ソースコードを完全公開中</h2>
-        <p class="cta-text">VContainerのスコープ定義や、R3を用いたイベント設計、クリーンなクラス設計の全容はリポジトリからすべてご覧いただけます。</p>
-        <div class="cta-buttons">
+    <!-- ソースコードへのリンク -->
+    <section class="call-to-action" style="text-align: center; padding: 5rem 0;">
+      <div class="container" style="max-width: 600px; margin: 0 auto;">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">GitHubで設計ソースコードを完全公開中</h2>
+        <p class="cta-text" style="color: var(--text-secondary); margin-bottom: 2rem;">VContainerのスコープ定義や、R3を用いたイベント設計、クリーンなクラス設計の全容はリポジトリからすべてご覧いただけます。</p>
+        <div class="cta-buttons" style="display: flex; justify-content: center; gap: 1rem;">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubリポジトリを見る</a>
           <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
         </div>
@@ -202,11 +208,4 @@
   </main>
 
   <!-- フッター -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 GamePortfolio.</p>
-    </div>
-  </footer>
-</body>
-
-</html>
+  <footer class="footer" style="padding: 2rem 0; border-top: 1px solid var(--border-color); text-align: center;">
