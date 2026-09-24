@@ -93,35 +93,40 @@
             <div class="pattern-grid">
               
               <div class="pattern-card">
-                <div class="pattern-icon">💾</div>
-                <h4>データ保存システム</h4>
-                <p>プレイヤーの進行状況、スコア、設定情報などのデータを適切に保存・読み込みするシステムを実装。ゲームの中断・再開を可能にし、ユーザー体験を向上させました。</p>
+                <div class="pattern-icon">📊</div>
+                <h4>CSVファイル読み込みシステム</h4>
+                <p>どの食材でどの料理ができるかという情報を、企画者がメンテナンスできるようにCSVファイルからの読み込みを実装。その情報をコードで読み込み、食材と料理とレシピの組み合わせ機能を実現しました。</p>
               </div>
-
+ 
               <div class="pattern-card">
                 <div class="pattern-icon">🎮</div>
-                <h4>操作切り替えシステム</h4>
-                <p>ゲームパッドとキーボードの両方に対応した操作システムを実装。プレイヤーの環境に応じて最適な入力方法を自動切り替えし、アクセシビリティを向上させました。</p>
+                <h4>InputSystemによるシーン毎操作切り替え</h4>
+                <p>当初は全てのボタンを使う実装予定でしたが、初めてプレイする人には覚えきれず不親切な作りになるため、同じボタンでわかりやすいように工夫しました。InputSystemのPlayerInputのActionMapをシーン毎に使い分けるように、シーン毎のスクリプトのStartに<code>GameManager.Instance.SetActionMap("")</code>を書き、そのシーンで行う操作を設定しました。</p>
               </div>
-
+ 
               <div class="pattern-card">
-                <div class="pattern-icon">📊</div>
-                <h4>CSVファイル読み込み</h4>
-                <p>料理レシピ、食材データ、スコア設定などのゲームデータをCSVファイルから動的に読み込むシステムを実装。データとロジックの分離により、バランス調整やコンテンツ追加を容易にしました。</p>
+                <div class="pattern-icon">👥</div>
+                <h4>2人プレイシステムの実装</h4>
+                <p>プレイヤーを二人設定するために<code>PlayerInputManager</code>の<code>MaxPlayerCount</code>を2に設定。プレイヤーの色も変えたかったため、<code>PlayerInputManager</code>の<code>PlayerPrefab</code>を配列にして「プレイヤー1だったら」「プレイヤー2だったら」という感じにプレハブを指定できるように実装しました。</p>
               </div>
-
+ 
+              <div class="pattern-card">
+                <div class="pattern-icon">📍</div>
+                <h4>初期位置・回転の指定システム</h4>
+                <p>プレイヤーの初期位置のポジションとローテーションを指定するために、プレハブが生成された時に指定するシステムを実装。2人プレイ時にそれぞれのプレイヤーが適切な位置から開始できるように制御しました。</p>
+              </div>
+              
               <div class="pattern-card">
                 <div class="pattern-icon">🎬</div>
                 <h4>タイトル画面実装</h4>
                 <p>ゲームの顔となるタイトル画面を設計・実装。メニュー操作、視覚効果、BGM同期などを含む、プレイヤーの第一印象を決定づける重要なUIを担当しました。</p>
               </div>
-
+ 
               <div class="pattern-card">
                 <div class="pattern-icon">🏠</div>
                 <h4>ロビー画面実装</h4>
                 <p>対戦準備を行うロビー画面を実装。プレイヤー同期、ルーム選択、設定調整などの機能を含み、スムーズなマルチプレイ体験を提供するUIシステムを構築しました。</p>
               </div>
-
             </div>
           </div>
         </div>
