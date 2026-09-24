@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2D横スクロールアクションゲーム | GamePortfolio</title>
   <link rel="stylesheet" href="https://unpkg.com">
-  <!-- 大文字のCSSフォルダと階層のズレを完全に最適化 -->
   <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
@@ -34,12 +33,12 @@
           <div class="project-hero-text">
             <span class="project-badge-large" style="background-color: var(--success-color);">PLAYABLE (WEB公開中)</span>
             <h1>2D横スクロールアクションゲーム</h1>
-            <p class="project-hero-subtitle">PC/スマホ両対応。ギミックの楽しさと、心地よい操作感・サウンドにこだわった王道2Dアクションゲームです。</p>
+            <p class="project-hero-subtitle">PC/スマホ両対応。ギミックの楽しさと、心地よい操作感・サウンドにこだわった王道2Dアクションゲームです。モダンなアーキテクチャを学習しながら開発しました。</p>
             
             <div class="project-hero-meta">
               <div class="meta-item">
                 <span class="meta-label">開発環境 / エンジン</span>
-                <span class="meta-value">Unity (C#)</span>
+                <span class="meta-value">Unity 6000.5.7f1 (C#) / R3 / UniTask</span>
               </div>
               <div class="meta-item">
                 <span class="meta-label">公開サイト</span>
@@ -63,7 +62,7 @@
       <div class="container">
         <h2 class="section-title">プロジェクト概要</h2>
         <p class="overview-text">
-          本作品は、フリーゲーム投稿サイト「unityroom」にて一般公開しているWebブラウザ対応の2Dアクションゲームです。「敵を踏んで倒す」「ジャンプでブロックを壊す」といった王道かつ直感的な楽しさをベースに、細かな演出やサウンド調整を重ねてクオリティを高めました。
+          本作品は、フリーゲーム投稿サイト「unityroom」にて一般公開しているWebブラウザ対応の2Dアクションゲームです。「敵を踏んで倒す」「ジャンプでブロックを壊す」といった王道かつ直感的な楽しさをベースに、細かな演出やサウンド調整を重ねてクオリティを高めました。同時に、State Patternやリアクティブプログラミングなどのモダンなアーキテクチャの学習も行っています。
         </p>
         
         <div class="overview-grid">
@@ -77,26 +76,41 @@
             <h3>クロスプラットフォーム対応</h3>
             <p>PCでのキーボード操作はもちろん、スマートフォンからのアクセスを自動判定し、画面上にモバイル専用の操作用GUIボタンを表示する仕組みを構築しています。</p>
           </div>
+          <div class="overview-card">
+            <div class="overview-icon">🏗️</div>
+            <h3>アーキテクチャ学習</h3>
+            <p>State Patternによる状態管理、R3によるリアクティブプログラミング、UniTaskによる非同期処理など、モダンなゲーム開発アーキテクチャの実装を学習・検証しています。</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 技術的な取り組み & 使用素材（CSSのスタイルを利用） -->
+    <!-- 技術的な取り組み -->
     <section class="technical-architecture">
       <div class="container">
         <div class="architecture-content">
           <div class="architecture-section">
-            <h3>技術的な取り組み & クラス設計</h3>
+            <h3>技術的な取り組み & アーキテクチャ</h3>
             <div class="pattern-grid">
               <div class="pattern-card">
                 <div class="pattern-icon">⚡</div>
-                <h4>イベント駆動によるスコアシステム</h4>
-                <p>敵の撃破やブロック破壊などのイベントとスコアシステムを疎結合に繋ぎ、拡張性の高いゲーム設計アーキテクチャを学んでいます。</p>
+                <h4>State Patternによる状態管理</h4>
+                <p>Player/Enemy/GameManagerの状態管理をState Patternで実装。<code>PlayerStateGroundBase</code>、<code>PlayerStateAirBase</code>などの基底クラスを用いて、Idle/Move/Jump/Fall/Dieなどの状態をカプセル化しています。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">🔄</div>
+                <h4>R3によるリアクティブプログラミング</h4>
+                <p>入力監視や状態変化の検知にR3（Reactive Extensions）を採用。<code>Observable.EveryUpdate</code>や<code>Subscribe</code>を使用して、宣言的なイベント処理を実現しています。</p>
+              </div>
+              <div class="pattern-card">
+                <div class="pattern-icon">⏱️</div>
+                <h4>UniTaskによる非同期処理</h4>
+                <p>状態遷移の<code>EnterAsync</code>メソッドでUniTaskを使用。非同期な状態遷移処理を<code>CancellationToken</code>で安全に管理し、キャンセル対応を実現しています。</p>
               </div>
               <div class="pattern-card">
                 <div class="pattern-icon">🛠️</div>
                 <h4>使用アセット・ライブラリ</h4>
-                <p>Sunny Land（グラフィック）、Free Casual GUI、TextMesh Proを活用し、視認性が高く洗練された画面レイアウトを実現しました。</p>
+                <p>Sunny Land（グラフィック）、Free Casual GUI、TextMesh Proを活用し、視認性が高く洗練された画面レイアウトを実現しました。BGMは甘茶の音楽工房、SEは効果音ラボを使用しています。</p>
               </div>
             </div>
           </div>
@@ -104,7 +118,7 @@
       </div>
     </section>
 
-    <!-- 操作方法（CSSの.challenges-gridを利用して綺麗に配置） -->
+    <!-- 操作方法 -->
     <section class="key-features">
       <div class="container">
         <h2 class="section-title">操作方法 & 仕様</h2>
@@ -119,15 +133,20 @@
             <h3>ゲーム仕様</h3>
             <p>敵を踏むと撃破（スコア加算）。ブロックは下からジャンプしてぶつかることで消去可能です。</p>
           </div>
+          <div class="feature-card">
+            <div class="feature-number">03</div>
+            <h3>モバイル対応</h3>
+            <p>スマートフォンからのアクセスを自動判定し、画面上にモバイル専用の操作用GUIボタンを表示します。</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- コールトゥアクション（CSSの.call-to-actionを利用） -->
+    <!-- コールトゥアクション -->
     <section class="call-to-action">
       <div class="container">
         <h2>Webブラウザで今すぐプレイ可能</h2>
-        <p class="cta-text">実際の動作やゲームのクオリティは、unityroomの公開ページにて直接遊んでご確認いただけます。</p>
+        <p class="cta-text">実際の動作やゲームのクオリティはunityroomの公開ページにて直接遊んでご確認いただけます。State PatternやR3を活用したアーキテクチャ実装はGitHubにてご確認いただけます。</p>
         <div class="cta-buttons">
           <a href="https://unityroom.com/games/2d_action_game_manchot" target="_blank" rel="noopener noreferrer" class="btn btn-primary">unityroomでゲームを遊ぶ</a>
           <a href="https://github.com/kousukekurose/GameDesignArchitecture" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHubで設計ソースを見る</a>
