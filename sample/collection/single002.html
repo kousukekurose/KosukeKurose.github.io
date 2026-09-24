@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2D横スクロールアクション（ゲーム設計プロジェクト） | GamePortfolio</title>
+  <title>2D横スクロールアクションゲーム | GamePortfolio</title>
   <link rel="stylesheet" href="https://unpkg.com">
+  <!-- 大文字のCSSフォルダと階層のズレを完全に最適化 -->
   <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
@@ -31,18 +32,18 @@
       <div class="container">
         <div class="project-hero-content">
           <div class="project-hero-text">
-            <span class="project-badge-large">ARCHITECTURE PROJECT</span>
-            <h1>2D横スクロールアクション<br>ゲーム設計アーキテクチャ</h1>
-            <p class="project-hero-subtitle">保守性と拡張性の極大化を目指す。デザインパターンと堅牢なクラス設計を学ぶためのゲームエンジニアリングプロジェクトです。</p>
+            <span class="project-badge-large" style="background-color: var(--success-color);">PLAYABLE (WEB公開中)</span>
+            <h1>2D横スクロールアクションゲーム</h1>
+            <p class="project-hero-subtitle">PC/スマホ両対応。ギミックの楽しさと、心地よい操作感・サウンドにこだわった王道2Dアクションゲームです。</p>
             
             <div class="project-hero-meta">
               <div class="meta-item">
-                <span class="meta-label">開発環境</span>
-                <span class="meta-value">Unity / C#</span>
+                <span class="meta-label">開発環境 / エンジン</span>
+                <span class="meta-value">Unity (C#)</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">注力テーマ</span>
-                <span class="meta-value">デザインパターン / 設計リファクタリング</span>
+                <span class="meta-label">公開サイト</span>
+                <span class="meta-value">unityroom</span>
               </div>
             </div>
           </div>
@@ -50,7 +51,7 @@
           <div class="game-preview">
             <div class="game-preview-placeholder">
               <span class="placeholder-icon">🕹️</span>
-              <span class="placeholder-text">設計クラス図やゲーム画面をここに配置</span>
+              <span class="placeholder-text">unityroomのプレイ画面スクショをここに配置</span>
             </div>
           </div>
         </div>
@@ -62,40 +63,40 @@
       <div class="container">
         <h2 class="section-title">プロジェクト概要</h2>
         <p class="overview-text">
-          本プロジェクトは、ただ「動くゲーム」を作るのではなく、「仕様変更に強く、コードがスパゲティ化しないゲーム開発」の実現を目的とした勉強用プロジェクトです [1, 0.1.10]。2D横スクロールアクションゲームをベースとし、ゲーム内の各システムが適切な責務を持つようにアーキテクチャを厳密に構築しています。
+          本作品は、フリーゲーム投稿サイト「unityroom」にて一般公開しているWebブラウザ対応の2Dアクションゲームです。「敵を踏んで倒す」「ジャンプでブロックを壊す」といった王道かつ直感的な楽しさをベースに、細かな演出やサウンド調整を重ねてクオリティを高めました。
         </p>
         
         <div class="overview-grid">
           <div class="overview-card">
-            <div class="overview-icon">🔎</div>
-            <h3>本プロジェクトで目指す設計</h3>
-            <p>UI、プレイヤー、敵、ステージギミックの各クラスが独立し、お互いを直接参照せずにイベント駆動で連携するクリーンな状態の維持。</p>
+            <div class="overview-icon">🌟</div>
+            <h3>こだわりポイント</h3>
+            <p>BGM・SE調整用のUI実装や、ゲームオーバーとゲームクリアで異なる演出・SEを設定し、プレイヤーが没頭できる丁寧なゲームデザインを追求しました。</p>
           </div>
           <div class="overview-card">
-            <div class="overview-icon">📊</div>
-            <h3>検証・学習内容</h3>
-            <p>状態管理の切り離し、共通処理のコンポーネント化、ゲーム全体の実行を統括するマネージャークラスの役割の最適化。</p>
+            <div class="overview-icon">📱</div>
+            <h3>クロスプラットフォーム対応</h3>
+            <p>PCでのキーボード操作はもちろん、スマートフォンからのアクセスを自動判定し、画面上にモバイル専用の操作用GUIボタンを表示する仕組みを構築しています。</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- テクニカルアーキテクチャ（CSSのスタイルを利用） -->
+    <!-- 技術的な取り組み & 使用素材（CSSのスタイルを利用） -->
     <section class="technical-architecture">
       <div class="container">
         <div class="architecture-content">
           <div class="architecture-section">
-            <h3>技術的な取り組み & 採用アーキテクチャ</h3>
+            <h3>技術的な取り組み & クラス設計</h3>
             <div class="pattern-grid">
               <div class="pattern-card">
-                <div class="pattern-icon">💡</div>
-                <h4>Stateパターンの導入</h4>
-                <p>プレイヤーの「待機」「移動」「ジャンプ」「攻撃」といった複雑な状態遷移をStateパターンで分離し、条件分岐（if文）の乱立を防いでいます。</p>
+                <div class="pattern-icon">⚡</div>
+                <h4>イベント駆動によるスコアシステム</h4>
+                <p>敵の撃破やブロック破壊などのイベントとスコアシステムを疎結合に繋ぎ、拡張性の高いゲーム設計アーキテクチャを学んでいます。</p>
               </div>
               <div class="pattern-card">
-                <div class="pattern-icon">⚙️</div>
-                <h4>コンポーネント指向の徹底</h4>
-                <p>移動や攻撃といった処理を単一責任のコンポーネントとして細分化し、新しい敵キャラクターなどを追加する際のコード再利用性を大幅に高めています。</p>
+                <div class="pattern-icon">🛠️</div>
+                <h4>使用アセット・ライブラリ</h4>
+                <p>Sunny Land（グラフィック）、Free Casual GUI、TextMesh Proを活用し、視認性が高く洗練された画面レイアウトを実現しました。</p>
               </div>
             </div>
           </div>
@@ -103,38 +104,33 @@
       </div>
     </section>
 
-    <!-- 課題と解決（CSSの.challenges-gridを利用） -->
-    <section class="challenges-solutions">
+    <!-- 操作方法（CSSの.challenges-gridを利用して綺麗に配置） -->
+    <section class="key-features">
       <div class="container">
-        <h2 class="section-title">設計における課題とアプローチ</h2>
-        <div class="challenges-grid">
-          
-          <div class="challenge-card">
-            <div class="challenge-header">
-              <span class="challenge-icon">⚠️</span>
-              <h3>課題：過度な密結合と機能追加の難し化</h3>
-            </div>
-            <p class="challenge-text">アクションゲームはギミックや敵の種類が増えるほど、オブジェクト同士が依存し合い、一部を書き換えると全体がバグる密結合になりがちです。</p>
-            <div class="challenge-divider"></div>
-            <div class="solution-header">
-              <span class="solution-icon">✨</span>
-              <h3>アプローチ</h3>
-            </div>
-            <p class="solution-text">インターフェース（Interface）の活用や、通知処理による疎結合なイベント駆動型アーキテクチャを取り入れ、コードの独立性を担保しています。</p>
+        <h2 class="section-title">操作方法 & 仕様</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>PC版の操作</h3>
+            <p>A / Dキー または ← / →キーで移動（＋Shiftキーで加速）。Spaceキーでジャンプ（＋Shiftキーで大ジャンプ）。</p>
           </div>
-
+          <div class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>ゲーム仕様</h3>
+            <p>敵を踏むと撃破（スコア加算）。ブロックは下からジャンプしてぶつかることで消去可能です。</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ソースコードへのリンク（CSSの.call-to-actionを利用） -->
+    <!-- コールトゥアクション（CSSの.call-to-actionを利用） -->
     <section class="call-to-action">
       <div class="container">
-        <h2>GitHubで設計リポジトリを公開中</h2>
-        <p class="cta-text">オブジェクト指向やUnityでのコーディング設計を意識したソースコードの全容は、以下からご確認いただけます。</p>
+        <h2>Webブラウザで今すぐプレイ可能</h2>
+        <p class="cta-text">実際の動作やゲームのクオリティは、unityroomの公開ページにて直接遊んでご確認いただけます。</p>
         <div class="cta-buttons">
-          <a href="https://github.com/kousukekurose/GameDesignArchitecture" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHubリポジトリを見る</a>
-          <a href="../index.html" class="btn btn-secondary">一覧に戻る</a>
+          <a href="https://unityroom.com/games/2d_action_game_manchot" target="_blank" rel="noopener noreferrer" class="btn btn-primary">unityroomでゲームを遊ぶ</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHubで設計ソースを見る</a>
         </div>
       </div>
     </section>
